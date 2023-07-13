@@ -1,6 +1,5 @@
 from django.urls import path 
 from . import views 
-# Описание 
 urlpatterns = [
     path('', views.MainPageCategory.as_view(), name='home'),
     path('category/catalog/', views.Catalog.as_view(), name='catalog'),
