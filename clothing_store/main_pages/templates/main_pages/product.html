@@ -1,0 +1,42 @@
+{% extends 'main_pages/base.html' %}
+
+{% block maincontent %}
+
+<div class="container">
+    <div class="btn-product-back">
+        <a href="{{ request.META.HTTP_REFERER|escape }}">Назад</a>
+    </div>
+    <div class="product-card-flex">
+      <div class="fotorama"
+        data-nav="thumbs"
+        data-width="100%"
+        data-ratio="522/709"
+        data-arrows="true"
+        data-fit="cover"
+        >
+        {% for image in images %}
+        <img class="product-card-img" src="{{ image.image.url }}">
+        {% endfor %}
+      </div>
+      
+      <div class="product-card-text">
+        <h1 class="product-card-title">
+          {{ product_slug.name }}
+        </h1>
+        <div class="prices">
+          {% if product_slug.discount > 0 %}
+          <p class="product-card-discount">
+            {{ product_slug.get_discount|floatformat }} ₽
+          </p>
+          {% endif %}
+          <p class="product-card-price">
+            {{ product_slug.price|floatformat }} ₽
+          </p>
+        </div>
+
+        
+      </div>
+    </div>
+</div>
+
+{% endblock %}

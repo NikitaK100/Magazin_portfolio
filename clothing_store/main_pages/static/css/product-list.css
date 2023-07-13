@@ -1,0 +1,172 @@
+@font-face {
+
+    font-family: "Poppins"; 
+    src: url("../fonts/Poppins/Poppins-Medium.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: 500; 
+} 
+  
+@font-face {
+  
+    font-family: "Poppins"; 
+    src: url("../fonts/Poppins/Poppins-Regular.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: 400; 
+} 
+  
+@font-face {
+  
+    font-family: "Poppins"; 
+    src: url("../fonts/Poppins/Poppins-SemiBold.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: 600; 
+} 
+  
+@font-face {
+  
+    font-family: "Roboto"; 
+    src: url("../fonts/Roboto/Roboto-Regular.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: 400; 
+} 
+  
+  
+@font-face {
+  
+    font-family: "Roboto"; 
+    src: url("../fonts/Roboto/Roboto-Medium.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: 500; 
+} 
+  
+@font-face {
+  
+    font-family: "Roboto"; 
+    src: url("../fonts/Roboto/Roboto-Bold.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: 600; 
+} 
+
+
+
+/* bread crumbs start */
+
+.bread-crumbs{
+    margin-top: 65px;
+    margin-bottom: 40px;;
+}
+
+.bread-crumbs-text{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 110%;
+
+    color: #242424;
+
+}
+
+.bread-crumbs-link{
+    opacity: 0.75;
+}
+
+.bread-crumbs-link:hover{
+    transition: 1s;
+    opacity: 1;
+}
+
+.products-title{
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 110%;
+
+    color: #242424;
+}
+
+
+
+/* bread crumbs end  */
+
+/* main-category-products start */
+
+.categories-main-product{
+    display: flex;
+    flex-wrap: flex;
+    gap: 10px;
+}
+
+.btn-categories-main-product{
+    display: block;
+    padding: 12px 26px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 110%;
+    margin-top: 26px;
+    margin-bottom: 26px;
+        
+        
+    color: #242424;
+    border-radius: 30px;
+    background-color: #FFFFFF;
+    background-position: center center;
+    border-style: solid;
+    border: 1px solid #242424;
+    transition: background-color 0s ease-in-out, color 0s ease-in-out, border-color 0s ease-in-out;
+}
+
+.btn-categories-main-product:hover{
+    border: 1px solid #898989;
+}
+
+/* main-category-products end */
+
+
+.products-card-grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    margin-bottom: 80px;
+}
+
+.product-card-photo{
+    width: 100%;
+}
+
+.product-card-name{
+
+    margin-top: 16px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 110%;
+
+    color: #242424;
+}
+
+.products-card-price{
+    margin-top: 10px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 110%;
+
+    color: #242424;
+}
+
+@media screen and (max-width: 700px){
+
+    .products-card-grid{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+    }
+
+}

@@ -1,0 +1,274 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link type="text/css" href="{% static 'css/reset.css' %}" rel="stylesheet" />
+    <link type="text/css" href="{% static 'css/navbar-styles.css' %}" rel="stylesheet" />
+    <link type="text/css" href="{% static 'css/mainpage.css' %}" rel="stylesheet" />
+    <link type="text/css" href="{% static 'css/product-list.css' %}" rel="stylesheet" />
+    <link type="text/css" href="{% static 'css/products-card.css' %}" rel="stylesheet" />
+    <!-- jQuery -->
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+    <!-- Fotorama -->
+    <link href="{% static 'css/fotorama.css' %}" rel="stylesheet">
+    <script src="{% static 'js/fotorama.js' %}"></script>
+    <title>{{ title }}</title>
+
+</head>
+<body>
+    <header class="header">
+      <div class="container">
+        <div class="logo">
+          <a class="logo-link" href="{% url 'home' %}">SUPER BREND</a>
+          <a class="basket-burger-img" href="basket"><img src="{% static 'main_pages/images/topbar-img/basket.svg' %}" alt=""></a>
+        </div>
+        <nav class="my-navbar">
+          <ul>
+            <li><a class="topbar-category" href="all-products">Все товары</a></li>
+            {% for cat in categories %}
+            <li class="drop">
+              <a href="{{ cat.get_absolute_url }}" class="topbar-category">{{ cat.name|title }}</a>
+              <div class="dropdownContain">
+                <div class="dropOut">
+                  <div class="triangle"></div>
+                  <ul>
+                    {% for subcat in subcategories %}
+                    {% if cat.id == subcat.category_id %}
+                    <li class="dropdown-text"><a href="{{ subcat.category.get_absolute_url }}{{ subcat.slug }}" >{{ subcat.name|title }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+            </li>
+            {% endfor %}
+            <li><a class="topbar-category" href="discounts">Скидки</a></li>
+            <a class="basket-img" href="basket"><img src="{% static 'main_pages/images/topbar-img/basket.svg' %}" alt=""></a>
+          </ul>
+          
+        </nav>
+
+        <!-- burger start -->
+        <div class="hamburger-menu">
+          <input id="menu__toggle" type="checkbox" />
+          <label class="menu__btn" for="menu__toggle">
+            <span></span>
+          </label>
+         
+          
+          <ul class="menu__box">
+            <li><a class="menu__item" href="all-products">Все товары</a></li>
+            {% for cat in categories %}
+            <li><a class="menu__item" href="{{ cat.get_absolute_url }}">{{ cat.name|title }}</a></li>
+            {% endfor %}
+            <li><a class="menu__item" href="discounts">Скидки</a></li>
+          </ul>
+  
+        </div>
+
+      </div>
+      <!-- burger end -->
+    </header>
+    
+    <!-- Этот блок и запросы в БД необходимо записать в MIXIN -->
+  
+{% block maincontent %}
+  <!-- section new collection start -->
+    <section class="new-collection">
+      <div class="container">
+        <div class="container-new-collection">
+          <p class="season">
+            Весна-лето 2022
+          </p>
+          <h1 class="title-new-collection">
+            Новые<br>
+            Коллекции
+          </h1>
+          <div class="button-new-collection">
+            <a href="#" class="see-more-new-collection">
+              Смотреть
+            </a>
+        </div>
+      </div>
+
+
+    </section>
+    <!-- section new collection start -->
+
+    <!-- section category start -->
+    <section class="main-category">
+      <div class="container">
+        <div class="main-category-grid">
+
+          <a class="photo-main-category">
+            <div><img class="category-photo" src="{% static 'images/mainpage-img/main-category-photo.jpg' %}">
+              <p class="main-category-text">Худи и свитшоты </p>
+            </div>
+          </a>
+
+          <a class="photo-main-category">
+            <div><img class="category-photo" src="{% static 'images/mainpage-img/main-category-photo.jpg' %}">
+              <p class="main-category-text">Футболки </p>
+            </div>
+          </a>
+
+          <a class="photo-main-category">
+            <div><img class="category-photo" src="{% static 'images/mainpage-img/main-category-photo.jpg' %}">
+              <p class="main-category-text">Сумки </p>
+            </div>
+          </a>
+          
+          <a class="photo-main-category">
+            <div><img class="category-photo" src="{% static 'images/mainpage-img/main-category-photo.jpg' %}">
+              <p class="main-category-text">Кепки</p>
+            </div>
+          </a>
+
+          <a class="photo-main-category">
+            <div><img class="category-photo" src="{% static 'images/mainpage-img/main-category-photo.jpg' %}">
+              <p class="main-category-text">Штаны </p>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+    <!-- section category end -->
+
+    <!-- popular collections start -->
+    <section class="popular-collections">
+      <div class="container">
+        <div class="title-block-popular-collections">
+          <h1 class="title-popular-collections">
+            Популярные коллекции
+          </h1>
+          <a href="#" class="see-everything">
+            Смотреть всё
+          </a>
+        </div>
+        <div class="examples-popular-items">
+          {% for product in products %}
+          <a href="#" class="example-card-item">
+            {% for image in images %}
+            {% if image.product.id == product.id %}
+            <img src="{{ image.image.url }}" class="photo-card-item">
+            {% endif %}
+            {% endfor %}
+
+            <p class="name-popular-item">{{product.name}}</p>
+            <p class="price-popular-item">{{ product.price|floatformat }} ₽</p>
+          </a>
+          {% endfor %}
+
+        </div>
+        <a href="#" class="see-everything-2">
+          Смотреть всё
+        </a>
+      </div>
+    </section>
+    <!-- popular collections end -->
+
+    <!-- new backpack start -->
+    <section class="new-backpack">
+      <div class="container">
+        <div class="new-backpack-toppadding container-new-collection">
+          <a href="#" class="play-video-new-backpack-2">
+            ►
+          </a>
+          <p class="season">
+            наш новый продукт
+          </p>
+          <h1 class="title-new-backpack">
+            Рюкзак 3.0 
+          <p class="description-new-backpack col-md-6">
+            Мы разработали такой рюкзак, что вы охренеете вообще.
+            Материал тщательно обработали, чтобы подчеркнуть его
+            мерейную фактуру и сделать приятнее на ощупь. В основное
+            отделение поместятся планшет и документы формата А5, а во
+            внешнем кармане удобно хранить смартфон и картхолдер.
+          </p>
+          <div class="button-new-collection">
+            <a href="#" class="see-more-new-collection">
+              Подробнее
+            </a>
+            <a href="#" class="play-video-new-backpack">
+              ►
+            </a>
+        </div>
+      </div>
+    </section>
+    <a href="#" class="see-more-new-backpack-2">
+      Подробнее
+    </a>
+    <!-- new backpuck end -->
+
+    <!-- gift certificate start -->
+
+    <section class="gift-certificate">
+      <div class="container">
+        <div class="gift-certificate-grid">
+          <div class="gift-certificate-text">
+            <h1 class="title-gift-certificate">
+              Подарочные сертификаты 
+            </h1>
+            <a href="#" class="see-more-gifts">
+              Ознакомиться
+            </a>
+          </div>
+          <div class="gift-certificate-photos">
+            <img src="{% static 'images/mainpage-img/gift-certificate-img.png' %}" class="gift-certificate-photo">
+            <img src="{% static 'images/mainpage-img/gift-certificate-ls-img.jpg' %}" class="gift-certificate-photo-ls">
+          </div>
+          <a href="#" class="see-more-gifts-2">
+            Ознакомиться
+          </a>
+        </div>
+      </div>
+    </section>
+<!-- gift certificate end -->
+{% endblock %}
+<!-- footer start -->
+    <section class="footer">
+      <div class="container">
+        <div class="grid-footer">
+          <div class="all-sections">
+            <a href="#" class="title-section">О нас</a>
+            <a href="#" class="sub-section">О бренде</a>
+            <a href="#" class="sub-section">Магазины</a>
+            <a href="#" class="sub-section">Контакты</a>
+          </div>
+          <div class="all-sections">
+            <a href="#" class="title-section">Категории</a>
+            <a href="#" class="sub-section">Одежда</a>
+            <a href="#" class="sub-section">Аксессуары</a>
+            <a href="#" class="sub-section">Скидки</a>
+          </div>
+          <div class="all-sections">
+            <a href="#" class="title-section">Информация</a>
+            <a href="#" class="sub-section">Доставка и оплата</a>
+            <a href="#" class="sub-section">Обмен и возврат</a>
+
+          </div>
+          <div class="all-sections">
+            <a href="#" class="title-section">Свяжитесь с нами</a>
+            <a href="#" class="sub-section">+7 999 999 99 99</a>
+            <a href="#" class="sub-section">Написать в Whats App</a>
+          </div>
+        </div>
+        <div class="all-sections-2">
+          <a href="#" class="title-section-2">© SUPER BREND 2022</a>
+          <a href="#" class="sub-section-2">Политика конфиденциальности</a>
+          <a href="#" class="sub-section-2">Оферта</a>
+        </div>
+      </div>
+    </section>
+    <!-- footer end -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> 
+  </body>
+
+</html>

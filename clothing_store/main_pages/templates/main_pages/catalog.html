@@ -1,0 +1,13 @@
+{% extends 'main_pages/base.html' %}
+
+{% block maincontent %}
+<div class="container">
+    <section class="bread-crumbs">
+        <div class="bread-crumbs-text">
+                <a href="{% url 'home' %}" class="bread-crumbs-link">Главная /</a>
+                <a>Каталог /</a>
+        </div>
+    </section>
+    <h1 class="products-title">Каталог</h1>
+</div>
+{% endblock maincontent %}

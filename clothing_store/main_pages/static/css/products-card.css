@@ -1,0 +1,157 @@
+@font-face {
+
+    font-family: "Poppins"; 
+    src: url("../fonts/Poppins/Poppins-Medium.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: 500; 
+} 
+  
+@font-face {
+  
+    font-family: "Poppins"; 
+    src: url("../fonts/Poppins/Poppins-Regular.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: 400; 
+} 
+  
+@font-face {
+  
+    font-family: "Poppins"; 
+    src: url("../fonts/Poppins/Poppins-SemiBold.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: 600; 
+} 
+  
+@font-face {
+  
+    font-family: "Roboto"; 
+    src: url("../fonts/Roboto/Roboto-Regular.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: 400; 
+} 
+  
+  
+@font-face {
+  
+    font-family: "Roboto"; 
+    src: url("../fonts/Roboto/Roboto-Medium.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: 500; 
+} 
+  
+@font-face {
+  
+    font-family: "Roboto"; 
+    src: url("../fonts/Roboto/Roboto-Bold.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: 600; 
+} 
+
+.btn-product-back{
+
+    margin-top: 56px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 110%;
+
+    color: #242424;
+
+    margin-bottom: 87px;
+
+}
+
+
+/* carousel(SliderPro) start */
+
+.product-card-flex{
+	display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 84px;
+} 
+
+.product-card-text{
+	margin-left: 10px;
+}
+
+.fotorama__thumb-border { display: none !important; }
+
+.fotorama__nav__shaft{
+    margin-top: 8px !important;
+    
+}
+
+
+.fotorama__nav--thumbs{
+    text-align: center !important;
+}
+
+.fotorama__arr--prev{
+    background: url(../images/arrow-left.svg) no-repeat !important;
+}
+
+.fotorama__arr--next{
+    background: url(../images/arrow-right.svg) no-repeat !important;
+}
+
+.product-card-img{
+    object-fit: cover;
+}
+
+@media  screen and (max-width: 750px) {
+    .product-card-flex{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 26px;
+    } 
+
+    .btn-product-back{
+        margin-bottom: 16px;
+    
+    }
+}
+
+/* carousel(Fotorama) end */
+
+.product-card-title{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 110%;
+
+    color: #242424;
+    margin-bottom: 40px;
+}
+
+
+.prices{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.product-card-price{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 110%;
+
+    color: #242424
+}
+
+.product-card-discount{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 110%;
+
+    text-decoration-line: line-through;
+
+    color: rgba(36, 36, 36, 0.5);
+}
+  /*# sourceMappingURL=styles.css.map */

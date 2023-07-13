@@ -1,0 +1,45 @@
+{% extends 'main_pages/base.html' %}
+
+{% block maincontent %}
+<div class="container">
+    <section class="bread-crumbs">
+        <div class="bread-crumbs-text">
+            {% for cat in categories %}
+                {% if categories_slug.slug == cat.slug %}
+                <a href="{% url 'home' %}" class="bread-crumbs-link">Главная /</a>
+                <a href="{% url 'catalog' %}" class="bread-crumbs-link">Каталог /</a>
+                <a href="{{ cat.get_absolute_url }}" class="bread-crumbs-link">{{ cat|title }} /</a>
+                <a>{{ subcategories_slug }}</a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+    <h1 class="products-title" style="margin-bottom: 26px;">{{ subcategories_slug.name|title }}</h1>
+</div>
+<div class="container">
+    <section class="products-card">
+        <div class="products-card-grid">
+            {% for product in products %}
+            {% if subcategories_slug.slug == product.sub_cat.slug %}
+            <a href="{{ request.get_full_path }}{{ product.slug }}" class="product-card-link">
+                {% for image in images %}
+                {% if image.product.id == product.id %}
+                <img class="product-card-photo" src="{{ image.image.url }}" alt="">
+                <p class="product-card-name">
+                    {{ product.name }}
+                </p>
+                <p class="product-card-price">
+                    {{ product.price|floatformat }} ₽
+                </p>
+                {% endif %}
+                {% endfor %}
+            </a>
+            {% endif %}
+            {% endfor %}
+            </div>
+            
+        </div>
+    </section>
+
+</div>
+{% endblock maincontent %}
