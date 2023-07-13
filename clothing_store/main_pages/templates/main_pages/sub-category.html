@@ -28,8 +28,8 @@
                 <p class="product-card-name">
                     {{ product.name }}
                 </p>
-                <p class="product-card-price">
-                    {{ product.price|floatformat }} ₽
+                <p class="product-card-discount">
+                    {{ product.get_discount|floatformat }} ₽
                 </p>
                 {% endif %}
                 {% endfor %}

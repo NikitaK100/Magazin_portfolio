@@ -10,12 +10,12 @@
       <div class="fotorama"
         data-nav="thumbs"
         data-width="100%"
-        data-ratio="522/709"
         data-arrows="true"
-        data-fit="cover"
         >
         {% for image in images %}
+        {% if product_slug.slug == image.product.slug %}
         <img class="product-card-img" src="{{ image.image.url }}">
+        {% endif %}
         {% endfor %}
       </div>
       
@@ -24,14 +24,50 @@
           {{ product_slug.name }}
         </h1>
         <div class="prices">
+          <p class="product-card-price">
+            {{ product_slug.price|floatformat }} ₽
+          </p>
           {% if product_slug.discount > 0 %}
           <p class="product-card-discount">
             {{ product_slug.get_discount|floatformat }} ₽
           </p>
           {% endif %}
-          <p class="product-card-price">
-            {{ product_slug.price|floatformat }} ₽
+        </div>
+        <p class="product-card-text-style">Размер</p>
+        <form class="form-add-basket" action="#">
+          <select class="select-size" name="select-size">
+            {% for size in sizes %}
+            {% if size.product.slug == product_slug.slug %}
+            <option class="option-size" value="{{ product_slug.slug }}{{ size.size }}">{{ size.size }}</option>
+            {% endif %}
+            {% endfor %}
+          </select>
+          <a href="#" class="choose-size">
+            Подобрать размер
+          </a>
+          <input class="btn-add-basket" type="submit" value="Добавить в корзину">
+        </form>
+        <div class="product-specifications">
+          {% for product in products %}
+          {% if product_slug.slug == product.slug %}
+          <p class="product-text-spec" style="margin-top: 60px">
+            <strong>Цвет:</strong>
+            {{ product.color|title }}
           </p>
+          <p class="product-text-spec">
+            <strong>
+              Состав: 
+            </strong>
+            {{ product.structure }}
+          </p>
+          <p class="product-text-spec col-10">
+            <strong>
+              Описание: 
+            </strong>
+            {{ product.description }}
+          </p>
+          {% endif %}
+          {% endfor %}
         </div>
 
         

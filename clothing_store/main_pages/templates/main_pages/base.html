@@ -25,7 +25,7 @@
       <div class="container">
         <div class="logo">
           <a class="logo-link" href="{% url 'home' %}">SUPER BREND</a>
-          <a class="basket-burger-img" href="basket"><img src="{% static 'main_pages/images/topbar-img/basket.svg' %}" alt=""></a>
+          <a class="basket-burger-img" href="{% url 'home' %}cart"><img src="{% static 'images/topbar-img/basket.svg' %}" alt=""></a>
         </div>
         <nav class="my-navbar">
           <ul>
@@ -48,7 +48,7 @@
             </li>
             {% endfor %}
             <li><a class="topbar-category" href="discounts">Скидки</a></li>
-            <a class="basket-img" href="basket"><img src="{% static 'main_pages/images/topbar-img/basket.svg' %}" alt=""></a>
+            <a class="basket-img" href="{% url 'home' %}cart"><img src="{% static 'images/topbar-img/basket.svg' %}" alt=""></a>
           </ul>
           
         </nav>

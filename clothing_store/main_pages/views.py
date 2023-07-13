@@ -2,7 +2,7 @@ from ast import Sub
 from django.shortcuts import get_object_or_404, render
 from django.http import Http404, HttpResponse
 from django.views.generic import ListView, DetailView, CreateView
-from main_pages.models import Products, Category, SubCategory, Images
+from main_pages.models import Products, Category, SubCategory, Images, Sizes
 
 from main_pages.utils import DataMixin
 
@@ -79,11 +79,13 @@ def products_card(request, cat_slug, sub_cat_slug, product_slug):
     subcategorys = SubCategory.objects.all()
     products = Products.objects.all()
     images = Images.objects.all()
+    sizes = Sizes.objects.all()
     context = {'categories_slug': category,
                'subcategories_slug': subcategory,
                'product_slug': product_slug, 
                'categories': categorys, 'subcategories': subcategorys, 'images': images, 
-               'products': products}
+               'products': products, 
+               'sizes': sizes}
     return render(request, 'main_pages/product.html', context=context)
 
 
